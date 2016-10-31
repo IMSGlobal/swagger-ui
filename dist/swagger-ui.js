@@ -4749,7 +4749,7 @@ Resolver.prototype.resolve = function (spec, arg1, arg2, arg3) {
           var sharedParameters = path.parameters || [];
           var parameters = operation.parameters || [];
 
-          for (i in sharedParameters) {
+          for (i = sharedParameters.length - 1; i >= 0; i--) {
             parameter = sharedParameters[i];
             parameters.unshift(parameter);
           }
