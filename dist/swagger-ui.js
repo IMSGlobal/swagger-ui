@@ -4,7 +4,7 @@
  * @link http://swagger.io
  * @license Apache-2.0
  */
-(function(){/* jshint ignore:start */ 
+(function(){/* jshint ignore:start */
  {(function() {
   var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
 templates['apikey_auth'] = template({"1":function(container,depth0,helpers,partials,data) {
@@ -90,6 +90,31 @@ templates['basic_auth'] = template({"1":function(container,depth0,helpers,partia
     + "</h3>\n    <form class=\"basic_input_container\">\n        <div class=\"auth__description\">"
     + ((stack1 = (helpers.sanitize || (depth0 && depth0.sanitize) || helpers.helperMissing).call(alias1,(depth0 != null ? depth0.description : depth0),{"name":"sanitize","hash":{},"data":data})) != null ? stack1 : "")
     + "</div>\n        <div class=\"auth_label\">\n            <span class=\"basic_auth__label\" data-sw-translate>username:</span>\n"
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.isLogout : depth0),{"name":"if","hash":{},"fn":container.program(3, data, 0),"inverse":container.program(5, data, 0),"data":data})) != null ? stack1 : "")
+    + "        </div>\n"
+    + ((stack1 = helpers.unless.call(alias1,(depth0 != null ? depth0.isLogout : depth0),{"name":"unless","hash":{},"fn":container.program(7, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "    </form>\n</div>\n";
+},"useData":true});
+templates['oauth1'] = template({"1":function(container,depth0,helpers,partials,data) {
+    return " - authorized";
+},"3":function(container,depth0,helpers,partials,data) {
+    var stack1;
+
+  return "                <span class=\"oauth1__value\">"
+    + ((stack1 = (helpers.escape || (depth0 && depth0.escape) || helpers.helperMissing).call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.username : depth0),{"name":"escape","hash":{},"data":data})) != null ? stack1 : "")
+    + "</span>\n";
+},"5":function(container,depth0,helpers,partials,data) {
+    return "                <input required placeholder=\"key\" class=\"oauth1__username auth_input\" name=\"username\" type=\"text\"/>\n";
+},"7":function(container,depth0,helpers,partials,data) {
+    return "            <div class=\"auth_label\">\n                <span class=\"oauth1__label\" data-sw-translate>secret:</span>\n                <input required placeholder=\"secret\" class=\"oauth1__password auth_input\" name=\"password\" type=\"password\"/></label>\n            </div>\n            <div class=\"auth_label\">\n                <span class=\"oauth1__label\" data-sw-translate>method:</span>\n                <select class=\"oauth1__method auth_input\" name=\"method\"><option value=\"HMAC-SHA1\">HMAC-SHA1</option><option value=\"HMAC-SHA256\">HMAC-SHA256</option></select></label>\n            </div>\n";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1, alias1=depth0 != null ? depth0 : {};
+
+  return "<div class='oauth1_container'>\n    <h3 class=\"auth__title\">OAuth 1 authentication"
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.isLogout : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "</h3>\n    <form class=\"oauth1_input_container\">\n        <div class=\"auth__description\">"
+    + ((stack1 = (helpers.sanitize || (depth0 && depth0.sanitize) || helpers.helperMissing).call(alias1,(depth0 != null ? depth0.description : depth0),{"name":"sanitize","hash":{},"data":data})) != null ? stack1 : "")
+    + "</div>\n        <div class=\"auth_label\">\n            <span class=\"oauth1__label\" data-sw-translate>key:</span>\n"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.isLogout : depth0),{"name":"if","hash":{},"fn":container.program(3, data, 0),"inverse":container.program(5, data, 0),"data":data})) != null ? stack1 : "")
     + "        </div>\n"
     + ((stack1 = helpers.unless.call(alias1,(depth0 != null ? depth0.isLogout : depth0),{"name":"unless","hash":{},"fn":container.program(7, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
@@ -658,7 +683,7 @@ templates['resource'] = template({"1":function(container,depth0,helpers,partials
     + ((stack1 = (helpers.sanitize || (depth0 && depth0.sanitize) || helpers.helperMissing).call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.url : depth0),{"name":"sanitize","hash":{},"data":data})) != null ? stack1 : "")
     + "' data-sw-translate>Raw</a>\n    </li>\n";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    var stack1, helper, options, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, buffer = 
+    var stack1, helper, options, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, buffer =
   "<div class='heading'>\n  <h2>\n    <a href='#!/"
     + ((stack1 = (helpers.sanitize || (depth0 && depth0.sanitize) || alias2).call(alias1,(depth0 != null ? depth0.id : depth0),{"name":"sanitize","hash":{},"data":data})) != null ? stack1 : "")
     + "' class=\"toggleEndpointList\" data-id=\""
@@ -770,7 +795,7 @@ templates['status_code'] = template({"1":function(container,depth0,helpers,parti
     + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.headers : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "    </tbody>\n  </table>\n</td>";
 },"useData":true});
-})();} 
+})();}
  /* jshint ignore:end */
 'use strict';
 
@@ -3189,6 +3214,7 @@ module.exports = SwaggerClient;
 
 SwaggerClient.ApiKeyAuthorization = auth.ApiKeyAuthorization;
 SwaggerClient.PasswordAuthorization = auth.PasswordAuthorization;
+SwaggerClient.Oauth1Authorization = auth.Oauth1Authorization;
 SwaggerClient.CookieAuthorization = auth.CookieAuthorization;
 SwaggerClient.SwaggerApi = deprecationWrapper;
 SwaggerClient.SwaggerClient = deprecationWrapper;
@@ -3344,7 +3370,91 @@ PasswordAuthorization.prototype.apply = function (obj) {
 
   return true;
 };
+/**
+ * OAuth1 Authorization is an OAuth 1 implementation
+ */
+var Oauth1Authorization = module.exports.Oauth1Authorization = function (username, password, method) {
+  this.username = username;
+  this.password = password;
+  this.method = method;
+};
 
+Oauth1Authorization.prototype.apply = function (obj) {
+  if (!obj.hasOwnProperty('clientAuthorizations')) {
+    return true;
+  }
+  var oauth = OAuth({
+      consumer: {
+          key: this.username,
+          secret: this.password
+      },
+      signature_method: this.method,
+      hash_function: function(base_string, key) {
+          var hash;
+          switch (this.signature_method) {
+              case 'HMAC-SHA1':
+                  hash = CryptoJS.HmacSHA1(base_string, key);
+                  break;
+              case 'HMAC-SHA256':
+                  hash = CryptoJS.HmacSHA256(base_string, key);
+                  break;
+          }
+          return hash.toString(CryptoJS.enc.Base64);
+      }
+  });
+  if(obj.headers && obj.headers['Content-Type'] && (obj.headers['Content-Type'] === 'application/x-www-form-urlencoded')) {
+    if(obj.body && (obj.body.indexOf('oauth_signature') === -1)) {
+      if (!this.signature) {
+        var data = {"oauth_callback" : "about:blank"};
+        var arr = obj.body.split('&');
+        for (var i = 0; i < arr.length; i++) {
+          var split = arr[i].split('=');
+          data[split[0].trim()] = split[1].trim();
+        }
+        var request = {
+            url: obj.url,
+            method: obj.method,
+            data: data
+        };
+        var oauth_data = oauth.authorize(request);
+        var sig = '';
+        for (var key in oauth_data) {
+            sig = sig + '&' + encodeURIComponent(key) + '=' + encodeURIComponent(oauth_data[key]);
+        }
+        this.signature = sig;
+      }
+      obj.body = this.signature.substring(1);
+    } else {
+      this.signature = false;
+    }
+  } else if(typeof obj.headers.Authorization === 'undefined') {
+    if (!this.signature) {
+      var hash;
+      switch (this.method) {
+          case 'HMAC-SHA1':
+              hash = CryptoJS.SHA1(obj.body);
+              break;
+          case 'HMAC-SHA256':
+              hash = CryptoJS.SHA256(obj.body);
+              break;
+      }
+      hash = hash.toString(CryptoJS.enc.Base64);
+      var data = {"oauth_body_hash" : hash};
+      var request = {
+          url: obj.url,
+          method: obj.method,
+          data: data
+      };
+      var oauth_data = oauth.authorize(request);
+      this.signature = oauth.toHeader(oauth_data).Authorization;
+    }
+    obj.headers.Authorization = this.signature;
+  } else {
+    this.signature = false;
+  }
+
+  return true;
+};
 },{"./helpers":4,"btoa":13,"cookiejar":18,"lodash-compat/collection/each":52,"lodash-compat/collection/includes":55,"lodash-compat/lang/isArray":140,"lodash-compat/lang/isObject":144}],3:[function(require,module,exports){
 'use strict';
 
@@ -3750,7 +3860,7 @@ SwaggerClient.prototype.buildFromSpec = function (response) {
   }
 
   // get paths, create functions for each operationId
-  
+
   // Bind help to 'client.apis'
   self.apis.help = _.bind(self.help, self);
 
@@ -4357,7 +4467,7 @@ SuperagentHttpClient.prototype.execute = function (obj) {
   if (connectionAgent) {
     r.agent(connectionAgent);
   }
-  
+
   if (timeout) {
     r.timeout(timeout);
   }
@@ -6511,6 +6621,10 @@ SwaggerSpecConverter.prototype.securityDefinitions = function(obj, swagger) {
       }
       else if(definition.type === 'basicAuth') {
         securityDefinition.type = 'basicAuth';
+        isValid = true;
+      }
+      else if(definition.type === 'oauth1') {
+        securityDefinition.type = 'oauth1';
         isValid = true;
       }
       else if(definition.type === 'oauth2') {
@@ -22181,6 +22295,9 @@ SwaggerUi.Collections.AuthsCollection = Backbone.Collection.extend({
                 case 'oauth2':
                     result = new SwaggerUi.Models.Oauth2Model(model);
                     break;
+                case 'oauth1':
+                    result = new SwaggerUi.Models.Oauth1Model(model);
+                    break;
                 case 'basic':
                     result = new SwaggerUi.Models.BasicAuthModel(model);
                     break;
@@ -22220,17 +22337,19 @@ SwaggerUi.Collections.AuthsCollection = Backbone.Collection.extend({
 
         return _.map(data, function (auth, name) {
             var isBasic = authz[name] && auth.type === 'basic' && authz[name].username && authz[name].password;
+            var isOauth1 = authz[name] && auth.type === 'oauth1' && authz[name].username && authz[name].password;
 
             _.extend(auth, {
                 title: name
             });
 
-            if (authz[name] || isBasic) {
+            if (authz[name] || isBasic || isOauth1) {
                 _.extend(auth, {
                     isLogout: true,
-                    value: isBasic ? undefined : authz[name].value,
-                    username: isBasic ? authz[name].username : undefined,
-                    password: isBasic ? authz[name].password : undefined,
+                    value: (isBasic || isOauth1) ? undefined : authz[name].value,
+                    username: (isBasic || isOauth1) ? authz[name].username : undefined,
+                    password: (isBasic || isOauth1) ? authz[name].password : undefined,
+                    method: (isOauth1) ? authz[name].method : undefined,
                     valid: true
                 });
             }
@@ -22272,6 +22391,8 @@ SwaggerUi.Views.AuthsCollectionView = Backbone.View.extend({
             authViewName = 'ApiKeyAuthView';
         } else if (type === 'basic' && this.$innerEl.find('.basic_auth_container').length === 0) {
             authViewName = 'BasicAuthView';
+        } else if (type === 'oauth1' && this.$innerEl.find('.oauth1_container').length === 0) {
+            authViewName = 'Oauth1View';
         } else if (type === 'oauth2') {
             authViewName = 'Oauth2View';
         }
@@ -22353,9 +22474,8 @@ SwaggerUi.Views.AuthView = Backbone.View.extend({
 
     authorize: function () {
         this.authsCollectionView.collection.forEach(function (auth) {
-            var keyAuth, basicAuth;
+            var keyAuth, basicAuth, oauth1;
             var type = auth.get('type');
-
             if (type === 'apiKey') {
                 keyAuth = new SwaggerClient.ApiKeyAuthorization(
                     auth.get('name'),
@@ -22367,6 +22487,9 @@ SwaggerUi.Views.AuthView = Backbone.View.extend({
             } else if (type === 'basic') {
                 basicAuth = new SwaggerClient.PasswordAuthorization(auth.get('username'), auth.get('password'));
                 this.router.api.clientAuthorizations.add(auth.get('title'), basicAuth);
+            } else if (type === 'oauth1') {
+                oauth1 = new SwaggerClient.Oauth1Authorization(auth.get('username'), auth.get('password'), auth.get('method'));
+                this.router.api.clientAuthorizations.add(auth.get('title'), oauth1);
             } else if (type === 'oauth2') {
                 this.handleOauth2Login(auth);
             }
@@ -22516,6 +22639,80 @@ SwaggerUi.Views.BasicAuthView = Backbone.View.extend({
     },
 
     template: Handlebars.templates.basic_auth,
+
+    render: function(){
+        $(this.el).html(this.template(this.model.toJSON()));
+
+        return this;
+    },
+
+    inputChange: function (e) {
+        var $el = $(e.target);
+        var val = $el.val();
+        var attr = $el.prop('name');
+
+        if (val) {
+            $el.removeClass(this.cls.error);
+        }
+
+        this.model.set(attr, val);
+    },
+
+    isValid: function () {
+        return this.model.validate();
+    },
+
+    highlightInvalid: function () {
+        if (!this.model.get('username')) {
+            this.$(this.selectors.usernameInput).addClass(this.cls.error);
+        }
+    }
+});
+
+SwaggerUi.Models.Oauth1Model = Backbone.Model.extend({
+    defaults: {
+        username: '',
+        password: '',
+        method: 'HMAC-SHA1',
+        title: 'oauth1'
+    },
+
+    initialize: function () {
+        this.on('change', this.validate);
+    },
+
+    validate: function () {
+        var valid = !!this.get('password') && !!this.get('username') && !!this.get('method');
+
+        this.set('valid', valid);
+
+        return valid;
+    }
+});
+'use strict';
+
+SwaggerUi.Views.Oauth1View = Backbone.View.extend({
+
+    initialize: function (opts) {
+        this.options = opts || {};
+        this.router = this.options.router;
+    },
+
+    events: {
+        'change .auth_input': 'inputChange'
+    },
+
+    selectors: {
+        usernameInput: '.oauth1__username',
+        passwordInput: '.oauth1__password',
+        methodInput: '.oauth1__method'
+    },
+
+    cls: {
+        error: 'error'
+    },
+
+    template: Handlebars.templates.oauth1,
 
     render: function(){
         $(this.el).html(this.template(this.model.toJSON()));
