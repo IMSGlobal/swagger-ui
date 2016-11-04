@@ -31,6 +31,9 @@ SwaggerUi.Collections.AuthsCollection = Backbone.Collection.extend({
                 case 'oauth2':
                     result = new SwaggerUi.Models.Oauth2Model(model);
                     break;
+                case 'oauth1':
+                    result = new SwaggerUi.Models.Oauth1Model(model);
+                    break;
                 case 'basic':
                     result = new SwaggerUi.Models.BasicAuthModel(model);
                     break;
@@ -70,6 +73,7 @@ SwaggerUi.Collections.AuthsCollection = Backbone.Collection.extend({
 
         return _.map(data, function (auth, name) {
             var isBasic = authz[name] && auth.type === 'basic' && authz[name].username && authz[name].password;
+            var isOauth1 = authz[name] && auth.type === 'oauth1' && authz[name].username && authz[name].password;
 
             _.extend(auth, {
                 title: name
@@ -78,9 +82,10 @@ SwaggerUi.Collections.AuthsCollection = Backbone.Collection.extend({
             if (authz[name] || isBasic) {
                 _.extend(auth, {
                     isLogout: true,
-                    value: isBasic ? undefined : authz[name].value,
-                    username: isBasic ? authz[name].username : undefined,
-                    password: isBasic ? authz[name].password : undefined,
+                    value: (isBasic || isOauth1) ? undefined : authz[name].value,
+                    username: (isBasic || isOauth1) ? authz[name].username : undefined,
+                    password: (isBasic || isOauth1) ? authz[name].password : undefined,
+                    method: (isOauth1) ? authz[name].method : undefined,
                     valid: true
                 });
             }

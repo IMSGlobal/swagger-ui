@@ -1261,6 +1261,10 @@
   display: inline-block;
   width: 60px;
 }
+.swagger-section .auth_container .oauth1__label {
+  display: inline-block;
+  width: 60px;
+}
 .swagger-section .auth_container .auth__description {
   color: #999999;
   margin-bottom: 5px;

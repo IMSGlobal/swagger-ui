@@ -31,6 +31,8 @@ SwaggerUi.Views.AuthsCollectionView = Backbone.View.extend({
             authViewName = 'ApiKeyAuthView';
         } else if (type === 'basic' && this.$innerEl.find('.basic_auth_container').length === 0) {
             authViewName = 'BasicAuthView';
+        } else if (type === 'oauth1' && this.$innerEl.find('.oauth1_container').length === 0) {
+            authViewName = 'Oauth1View';
         } else if (type === 'oauth2') {
             authViewName = 'Oauth2View';
         }

@@ -1,0 +1,20 @@
+<div class='oauth1_container'>
+    <h3 class="auth__title">OAuth 1 authentication{{#if isLogout}} - authorized{{/if}}</h3>
+    <form class="oauth1_input_container">
+        <div class="auth__description">{{{sanitize description}}}</div>
+        <div class="auth_label">
+            <span class="oauth1__label" data-sw-translate>key:</span>
+            {{#if isLogout}}
+                <span class="oauth1__value">{{{escape username}}}</span>
+            {{else}}
+                <input required placeholder="key" class="oauth1__username auth_input" name="username" type="text"/>
+            {{/if}}
+        </div>
+        {{#unless isLogout}}
+            <div class="auth_label">
+                <span class="oauth1__label" data-sw-translate>secret:</span>
+                <input required placeholder="secret" class="oauth1__password auth_input" name="password" type="password"/></label>
+            </div>
+        {{/unless}}
+    </form>
+</div>
