@@ -15,6 +15,13 @@
                 <span class="oauth1__label" data-sw-translate>secret:</span>
                 <input required placeholder="secret" class="oauth1__password auth_input" name="password" type="password"/></label>
             </div>
+            <div class="auth_label">
+                <span class="oauth1__label">method:</span>
+                <select class="oauth1__method auth_input" name="method">
+                    <option value="HMAC-SHA1">HMAC-SHA1</option>
+                    <option value="HMAC-SHA256">HMAC-SHA256</option>
+                </select></label>
+            </div>
         {{/unless}}
     </form>
 </div>

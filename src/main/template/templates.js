@@ -222,7 +222,7 @@ templates['oauth1'] = template({"1":function(container,depth0,helpers,partials,d
 },"5":function(container,depth0,helpers,partials,data) {
     return "                <input required placeholder=\"key\" class=\"oauth1__username auth_input\" name=\"username\" type=\"text\"/>\n";
 },"7":function(container,depth0,helpers,partials,data) {
-    return "            <div class=\"auth_label\">\n                <span class=\"oauth1__label\" data-sw-translate>secret:</span>\n                <input required placeholder=\"secret\" class=\"oauth1__password auth_input\" name=\"password\" type=\"password\"/></label>\n            </div>\n";
+    return "            <div class=\"auth_label\">\n                <span class=\"oauth1__label\" data-sw-translate>secret:</span>\n                <input required placeholder=\"secret\" class=\"oauth1__password auth_input\" name=\"password\" type=\"password\"/></label>\n            </div>\n            <div class=\"auth_label\">\n                <span class=\"oauth1__label\">method:</span>\n                <select class=\"oauth1__method auth_input\" name=\"method\">\n                    <option value=\"HMAC-SHA1\">HMAC-SHA1</option>\n                    <option value=\"HMAC-SHA256\">HMAC-SHA256</option>\n                </select></label>\n            </div>\n";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, alias1=depth0 != null ? depth0 : {};
 

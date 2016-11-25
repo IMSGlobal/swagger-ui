@@ -79,7 +79,7 @@ SwaggerUi.Collections.AuthsCollection = Backbone.Collection.extend({
                 title: name
             });
 
-            if (authz[name] || isBasic) {
+            if (authz[name] || isBasic || isOauth1) {
                 _.extend(auth, {
                     isLogout: true,
                     value: (isBasic || isOauth1) ? undefined : authz[name].value,
